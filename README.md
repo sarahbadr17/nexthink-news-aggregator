@@ -94,8 +94,3 @@ tests/
 ├── test_api.py                # Basic API tests
 └── test_classifier.py         # Basic classifier tests               
 ```
-
-## Notes
-
-- The classifier currently relies on article title and summary text rather than full article body content
-- The implementation focuses on clean modularity and core functionality over production completeness
