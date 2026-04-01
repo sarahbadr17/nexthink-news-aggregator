@@ -27,8 +27,7 @@ async def fetch_subreddit(subreddit: str, limit: int = 20) -> list[dict[str, Any
             "external_id": post["data"]["id"],
             "title": post["data"]["title"],
             "url": f"https://www.reddit.com{post['data']['permalink']}",
-            "summary": None, 
-            "content": None, #TODO: fetch full article content
+            "summary": post["data"].get("selftext") or "", 
             "published_at": datetime.fromtimestamp(
                 post["data"]["created_utc"], tz=timezone.utc
             ),
@@ -40,7 +39,7 @@ async def fetch_subreddit(subreddit: str, limit: int = 20) -> list[dict[str, Any
 async def main():
     articles = await fetch_subreddit("programming", limit=10)
     for a in articles:
-        print(f"[{a['published_at'].isoformat()}] {a['title']}")
+        print(f"[{a['published_at'].isoformat()}] {a['summary']}")
         print(f"  → {a['url']}\n")
 
 

@@ -40,7 +40,6 @@ async def fetch_rss(
                 "title": getattr(entry, "title", ""),
                 "url": getattr(entry, "link", ""),
                 "summary": getattr(entry, "summary", None),
-                "content": None, #TODO: fetch full article content
                 "published_at": published_at,
             }
         )
