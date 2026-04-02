@@ -105,10 +105,3 @@ async def run_polling(interval_seconds: int = POLL_INTERVAL_SECONDS) -> None:
             logger.exception("Fetch cycle failed: will retry next interval.")
 
         await asyncio.sleep(interval_seconds)
-
-if __name__ == "__main__":
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s [%(levelname)s] %(name)s — %(message)s",
-    )
-    asyncio.run(run_polling())

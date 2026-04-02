@@ -34,14 +34,3 @@ async def fetch_subreddit(subreddit: str, limit: int = 20) -> list[dict[str, Any
         }
         for post in data["data"]["children"]
     ]
-
-
-async def main():
-    articles = await fetch_subreddit("programming", limit=10)
-    for a in articles:
-        print(f"[{a['published_at'].isoformat()}] {a['summary']}")
-        print(f"  → {a['url']}\n")
-
-
-if __name__ == "__main__":
-    asyncio.run(main())

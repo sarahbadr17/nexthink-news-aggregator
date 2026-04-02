@@ -64,15 +64,3 @@ async def fetch_all_sites(limit: int = 20) -> list[dict[str, Any]]:
             articles.extend(result)
 
     return articles
-
-
-async def main():
-    articles = await fetch_all_sites(limit=50)
-    for a in articles:
-        print(f"[{a['source']}] {a['title']}")
-        print(f"  → {a['url']}")
-        print(f"  Published: {a['published_at']}\n")
-    print(f"\nTotal: {len(articles)} articles\n")
-
-if __name__ == "__main__":
-    asyncio.run(main())
